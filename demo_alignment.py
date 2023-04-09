@@ -246,23 +246,6 @@ def demo_alignment(config):
     fixed_model_feats = model(fixed_tensor).F
     moving_model_feats = model(moving_tensor).F
 
-    # visualize model features
-    # fixed_vis_pcd = o3d.geometry.PointCloud()
-    # fixed_vis_pcd.points = o3d.utility.Vector3dVector(fixed_unique_xyz)
-    # fixed_vis_pcd = get_colored_point_cloud_feature(
-    #     fixed_vis_pcd,
-    #     fixed_model_feats.detach().cpu().numpy(),
-    #     voxel_size)
-    # o3d.visualization.draw_geometries([fixed_vis_pcd])
-    #
-    # moving_vis_pcd = o3d.geometry.PointCloud()
-    # moving_vis_pcd.points = o3d.utility.Vector3dVector(moving_unique_xyz)
-    # moving_vis_pcd = get_colored_point_cloud_feature(
-    #     moving_vis_pcd,
-    #     moving_model_feats.detach().cpu().numpy(),
-    #     voxel_size)
-    # o3d.visualization.draw_geometries([moving_vis_pcd])
-
     # compute correspondences and alignment
     xyz0_corr, xyz1_corr = find_corr(
         torch.tensor(moving_unique_xyz, dtype=torch.float32).to(device),
